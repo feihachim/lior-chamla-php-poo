@@ -13,6 +13,11 @@
 
 require_once('libraries/database.php');
 require_once('libraries/utils.php');
+require_once('libraries/models/Article.php');
+require_once('libraries/models/Comment.php');
+
+$articleModel = new Article();
+$commentModel = new Comment();
 
 /**
  * 1. Récupération du param "id" et vérification de celui-ci
@@ -38,14 +43,14 @@ if (!$article_id)
  * jamais confiance à ce connard d'utilisateur ! :D
  */
 
-$article = findArticle($article_id);
+$article = $articleModel->find($article_id);
 
 /**
  * 4. Récupération des commentaires de l'article en question
  * Pareil, toujours une requête préparée pour sécuriser la donnée filée par l'utilisateur (cet enfoiré en puissance !)
  */
 
-$commentaires = findAllComments($article_id);
+$commentaires = $commentModel->findAllWithArticle($article_id);
 
 /**
  * 5. On affiche 
