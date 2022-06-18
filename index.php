@@ -7,20 +7,7 @@
  * puis on va boucler dessus pour afficher chacun d'entre eux
  */
 
-require_once('libraries/database.php');
-require_once('libraries/utils.php');
-require_once('libraries/models/Article.php');
+require_once('libraries/controllers/Article.php');
 
-$model = new Article();
-
-/**
- * 2. Récupération des articles
- */
-
-$articles = $model->findAll();
-
-/**
- * 3. Affichage
- */
-$pageTitle = "Accueil";
-render('articles/index', compact('pageTitle', 'articles'));
+$controller = new \Controllers\Article();
+$controller->index();
