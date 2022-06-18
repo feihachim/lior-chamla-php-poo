@@ -11,7 +11,7 @@ abstract class Model
 
     public function __construct()
     {
-        $this->pdo = getPdo();
+        $this->pdo = \Database::getPdo();
         $this->table = $this->getTableName(get_called_class());
     }
 

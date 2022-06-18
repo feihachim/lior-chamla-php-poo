@@ -1,10 +1,6 @@
 <?php
 
-namespace Controller;
-
-require_once('libraries/utils.php');
-require_once('libraries/models/Article.php');
-require_once('libraries/models/Comment.php');
+namespace Controllers;
 
 abstract class Controller
 {
